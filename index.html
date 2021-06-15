@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online chess</title>
+    <link rel="stylesheet" href="chess.css">
+    <script
+	    src="https://code.jquery.com/jquery-1.12.4.js"
+	    integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+        crossorigin="anonymous"></script>
+    <script
+        src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+        integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+        crossorigin="anonymous"></script>
+        <script src="chess.js"></script>
+        <style>
+            .active_square {
+                background: green;
+            }
+            .active_figure {
+                color: lightgreen;
+                text-shadow: 0 0 5px lime,
+                            0 0 25px lime,
+                            0 0 50px lime,
+                            0 0 200px limegreen;
+            }
+        </style>
+</head>
+<body>
+    <div class="game_box">
+        <div class="board">
+            
+        </div>
+        <div class="button_panel">
+            <div class="button_new">New Game</div>
+            <div class="button_flip">Flip</div>
+            <div class="info_panel"></div>
+        </div>
+    </div>
+    <div class="modal"></div>
+    
+</body>
+</html>

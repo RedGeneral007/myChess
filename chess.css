@@ -1,0 +1,330 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    margin: 0;
+    height: 100vh;
+}
+.board {
+    width: 640px;
+    height: 640px;
+    border: 6px solid lightskyblue;
+    box-shadow: 0 0 5px deepskyblue,
+                0 0 25px deepskyblue,
+                0 0 50px deepskyblue,
+                0 0 200px deepskyblue;
+}
+.square {
+    float: left;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.black {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.white {
+    background-color: rgba(128,128,128,.6);
+}
+
+
+.figure {
+    font-size: 60px;
+    cursor: pointer;
+    color: rgb(102, 38, 129);
+    text-shadow: 0 0 5px rgb(255, 255, 255),
+                0 0 15px  rgb(158, 105, 105);
+}
+
+.button_panel {
+    display: flex;
+    flex-direction: row;
+    height: 55px;
+}
+.button_new, .button_flip {
+    margin: 5px;
+    padding: 6px;
+    font-size: 24px;
+    color: white;
+    text-shadow:0 0 3px darkblue;
+    border-radius: 10px;
+    border: 1px lightskyblue solid;
+    transition: all 0.2s ease-in-out;
+}
+.button_new:hover,.button_flip:hover {
+    background-color: deepskyblue;
+    color: black;
+    box-shadow: 0 0 5px deepskyblue,
+                0 0 25px deepskyblue,
+                0 0 50px deepskyblue,
+                0 0 200px deepskyblue;
+    cursor: pointer;
+}
+.button_flip {
+    margin: 5px 5px 5px 0;
+    padding: 6px 10px 0 10px;
+}
+.info_panel {
+    width: auto;
+    margin: auto;
+    padding: 5px 90px 5px 90px;
+    border-radius: 2px;
+    font-size: 24px;
+    display: flex;
+    background-color: deepskyblue;
+    border: 6px solid lightskyblue;
+    box-shadow: 0 0 5px deepskyblue,
+                0 0 25px deepskyblue,
+                0 0 50px deepskyblue,
+                0 0 200px deepskyblue;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    transition: all 1s ease-in-out;
+}
+.info_panel .check_text {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: black;
+    text-shadow: 0 0 2px black,
+                5px 3px 5px black;
+}
+.modal_select {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.3);
+}
+.container_select {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    top: calc(50vh - 150px);
+    left: calc(50vw - 250px);
+    width: 500px;
+    height: 300px;
+    background-color: black;
+    border-radius: 10px;
+    border: 4px solid lightskyblue;
+    box-shadow: 0 0 5px deepskyblue,
+                0 0 10px deepskyblue;
+}
+h2 {
+    margin: 0;
+    align-self: center;
+    font-size: 36px;
+    color: white;
+    text-shadow: 0 0 2px white;
+}
+.container_select p {
+    margin: 0;
+    margin-bottom: 10px;
+    align-self: center;
+    font-size: 24px;
+    color: white;
+}
+.box_select {
+    min-width: 90%;
+    height: 190px;
+    align-self: center;
+    justify-self: center;
+    background-color: grey;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 3px white;
+}
+.box_select p {
+    position: absolute;
+    top: 90px;
+    font-size: 24px;
+    color: white;
+}
+.square_select {
+    width: 80px;
+    height: 80px;
+    margin-left: 10px;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: black;
+    box-shadow: 0 0 5px deepskyblue,
+                0 0 10px deepskyblue;
+    border: 1px deepskyblue solid;
+    transition: all 0.2s ease-in-out;
+}
+
+.square_select:nth-child(1) {
+    margin-left: 0;
+}
+.figure_select {
+    font-size: 60px;
+    cursor: pointer;
+    color: lightskyblue;
+    text-shadow: 0 0 2px lightskyblue;
+    transition: all 0.2s ease-in-out;
+}
+.square_select:hover {
+    box-shadow: 0 0 5px deepskyblue,
+                0 0 25px deepskyblue,
+                0 0 50px deepskyblue,
+                0 0 200px deepskyblue;
+}
+.square_select:hover .figure_select{
+    color: deepskyblue;
+}
+
+.square_select span {
+    position: absolute;
+    display: block;
+}
+.square_select span:nth-child(1) {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, deepskyblue);
+    animation: animate1 1.6s linear infinite;
+}
+@keyframes animate1
+{
+    0%
+    {
+        left: -100%;
+    }
+    50%,100%
+    {
+        left: 100%;
+    }
+}
+.square_select span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, deepskyblue);
+    animation: animate2 1.6s linear infinite;
+    animation-delay: 0.4s;
+}
+@keyframes animate2
+{
+    0%
+    {
+        top: -100%;
+    }
+    50%,100%
+    {
+        top: 100%;
+    }
+}
+
+.square_select span:nth-child(3) {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, deepskyblue);
+    animation: animate3 1.6s linear infinite;
+    animation-delay: 0.8s;
+}
+@keyframes animate3
+{
+    0%
+    {
+        right: -100%;
+    }
+    50%,100%
+    {
+        right: 100%;
+    }
+}
+
+.square_select span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(270deg, transparent, deepskyblue);
+    animation: animate4 1.6s linear infinite;
+    animation-delay: 1.2s;
+}
+@keyframes animate4
+{
+    0%
+    {
+        bottom: -100%;
+    }
+    50%,100%
+    {
+        bottom: 100%;
+    }
+}
+
+.check_modal {
+    width: 200px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    border: 6px solid lightskyblue;
+    box-shadow: 0 0 5px deepskyblue,
+                0 0 25px deepskyblue,
+                0 0 50px deepskyblue,
+                0 0 200px deepskyblue;
+    background-color: deepskyblue;
+    position: fixed;
+    animation: animate_check_modal 1.5s linear forwards;
+}
+.check_modal p {
+    margin: 0;
+    padding: 0;
+    font-size: 50px;
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 0 5px deepskyblue,
+    0 0 25px deepskyblue,
+    0 0 50px deepskyblue,
+    0 0 200px deepskyblue;
+    align-self: center;
+    animation: animate_check_text 1.5s linear forwards;
+}
+@keyframes animate_check_modal
+{
+    0%
+    {
+        width: 200px;
+        height: 100px;
+        opacity: 1;
+    }
+    100%
+    {
+        width: 450px;
+        height: 280px;
+        opacity: 0;
+    }
+}
+@keyframes animate_check_text
+{
+    0%
+    {
+        font-size: 50px;
+    }
+    40%
+    {
+        opacity: 0.5;
+    }
+    100%
+    {
+        font-size: 100px;
+    }
+}
